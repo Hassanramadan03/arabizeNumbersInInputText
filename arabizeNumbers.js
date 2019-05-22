@@ -1,5 +1,5 @@
 
-  const numbers = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0', 'Backspace'];
+  const numbers = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0', 'Backspace','ArrowRight','ArrowLeft'];
   input.oninput = function () {
       input.value = input.value
           .replace(/0/g, '۰')
@@ -14,25 +14,22 @@
           .replace(/9/g, '۹')
       if (input.value.indexOf('.') > -1) input.value = input.value.substring(0, input.value.indexOf('.') + 3)
   };
-  function arabize(element) {
-
-      var nubmers = { '۰': 0, '۱': 1, '۲': 2, '۳': 3, '٤': 4, '۵': 5, '۶': 6, '۷': 7, '۸': 8, '۹': 9, '.': '.' }
+  function arabize(number) {
+      var nubmers = { '۰': 0, '۱': 1, '۲': 2, '۳': 3, '٤': 4, '٥': 5, '٦': 6, '۷': 7, '۸': 8, '۹': 9, '.': '.' }
       var result = '';
-      for (let letter of element) {
-          console.log(letter)
-          result += nubmers[letter];
-          console.log(result)
+      for (let digit of number) {
+          result += nubmers[digit];
       }
       return result;
   }
   function onlyNumbers(event) {
       var key = event.key;
-      console.log(input.value.indexOf('.') == -1 || (key === '.'))
+      console.log(key)
       return (numbers.indexOf(key) > -1) || (input.value.indexOf('.') == -1 && key === '.')
   };
   function viewEnglishNumbers() {
     const element = input.value;
     const num = arabize(element)
-    const n=parseFloat(num)
-    alert(n)
+    const realNumber=parseFloat(num)
+    alert(realNumber)
 }
